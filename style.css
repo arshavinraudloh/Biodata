@@ -851,3 +851,9 @@ tbody tr:last-child td {
         padding-bottom: 20px;
     }
 }
+    .school-logo {
+    width: 35px !important;
+    height: 35px !important;
+    object-fit: contain;
+    flex-shrink: 0;
+    }
