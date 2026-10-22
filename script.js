@@ -1,7 +1,7 @@
 "use strict";
 
 /* =====================================
-   KONFIGURASI APLIKASI
+   KONFIGURASI
 ===================================== */
 
 const STORAGE_KEY = "osisAlfalahAlmakkyDataV1";
