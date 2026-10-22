@@ -522,14 +522,12 @@ function exportCSV() {
         "Kelas",
         "Tahun Ajaran Mulai",
         "Tahun Ajaran Selesai",
-        "NIS",
-        "NISN",
         "Tempat Lahir",
         "Tanggal Lahir",
         "Jenis Kelamin",
         "Agama",
         "Nomor HP",
-        "Email",
+        "Instagram",
         "Alamat"
     ];
 
@@ -541,14 +539,12 @@ function exportCSV() {
         item.kelas,
         item.tahunMulai,
         item.tahunSelesai,
-        item.nis,
-        item.nisn,
         item.tempatLahir,
         item.tanggalLahir,
         item.jenisKelamin,
         item.agama,
         item.telepon,
-        item.email,
+        item.instagram,
         item.alamat
     ]);
 
