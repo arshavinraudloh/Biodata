@@ -68,7 +68,7 @@ function renderData() {
     if (!filtered.length) {
         table.innerHTML = `
             <tr>
-                <td colspan="8">Data tidak ditemukan.</td>
+                <td colspan="9">Data tidak ditemukan.</td>
             </tr>`;
         return;
     }
@@ -83,9 +83,116 @@ function renderData() {
             <td>${escapeHTML(item.telepon)}</td>
             <td>${escapeHTML(item.tahunMulai)}</td>
             <td>${escapeHTML(item.tahunSelesai)}</td>
+            <td>
+                <button type="button"
+                    class="detail-button"
+                    data-id="${escapeHTML(item.id)}">
+                    Lihat Detail
+                </button>
+            </td>
         </tr>
     `).join("");
 }
+
+table.addEventListener("click", event => {
+    const button = event.target.closest(".detail-button");
+
+    if (!button) return;
+
+    const item = allData.find(data => data.id === button.dataset.id);
+
+    if (!item) {
+        showMessage("Data biodata tidak ditemukan.");
+        return;
+    }
+
+    const detailWindow = window.open("", "_blank");
+
+    if (!detailWindow) {
+        showMessage("Izinkan pop-up browser untuk melihat detail.");
+        return;
+    }
+
+    const rows = Object.entries(item)
+        .filter(([key]) => key !== "id")
+        .map(([key, value]) => {
+            let displayValue = "";
+
+            if (value && typeof value.toDate === "function") {
+                displayValue = value.toDate().toLocaleString("id-ID");
+            } else if (value && typeof value === "object") {
+                displayValue = JSON.stringify(value);
+            } else {
+                displayValue = String(value ?? "-");
+            }
+
+            return `
+                <tr>
+                    <th>${escapeHTML(key)}</th>
+                    <td>${escapeHTML(displayValue)}</td>
+                </tr>
+            `;
+        })
+        .join("");
+
+    detailWindow.document.write(`
+        <!DOCTYPE html>
+        <html lang="id">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>Detail Biodata</title>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    max-width: 800px;
+                    margin: 30px auto;
+                    padding: 20px;
+                    background: #f4f7f5;
+                    color: #173d32;
+                }
+
+                h1 {
+                    text-align: center;
+                }
+
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    background: white;
+                }
+
+                th, td {
+                    border: 1px solid #ddd;
+                    padding: 12px;
+                    text-align: left;
+                    overflow-wrap: anywhere;
+                }
+
+                th {
+                    width: 35%;
+                    background: #e5eee9;
+                }
+
+                button {
+                    margin-top: 20px;
+                    padding: 10px 16px;
+                    cursor: pointer;
+                }
+            </style>
+        </head>
+        <body>
+            <h1>Detail Biodata Siswa</h1>
+            <table>
+                <tbody>${rows}</tbody>
+            </table>
+            <button onclick="window.print()">Cetak Detail</button>
+        </body>
+        </html>
+    `);
+
+    detailWindow.document.close();
+});
 
 async function loadData() {
     if (auth.currentUser?.uid !== ADMIN_UID) {
