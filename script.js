@@ -40,7 +40,6 @@ formMessage.className = `form-message ${type}`;
 function generateSchoolYears() {
 const currentYear = new Date().getFullYear();
 
-```
 for (let year = currentYear - 3; year <= currentYear + 8; year++) {
     const value = `${year}/${year + 1}`;
 
@@ -56,7 +55,6 @@ tahunMulai.value = `${currentYear}/${currentYear + 1}`;
 tahunSelesai.value = `${currentYear + 1}/${currentYear + 2}`;
 
 updatePeriodPreview();
-```
 
 }
 
@@ -64,7 +62,6 @@ function updatePeriodPreview() {
 const start = tahunMulai.value;
 const end = tahunSelesai.value;
 
-```
 if (!start || !end) {
     periodPreview.textContent =
         "Periode kepengurusan akan ditampilkan di sini.";
@@ -82,14 +79,12 @@ if (endYear < startYear) {
 
 periodPreview.textContent =
     `Periode Kepengurusan: Tahun Ajaran ${start} sampai ${end}.`;
-```
 
 }
 
 function updateClassOptions() {
 const previousValue = kelas.value;
 
-```
 kelas.replaceChildren();
 
 const placeholder = document.createElement("option");
@@ -113,19 +108,16 @@ for (const className of classes) {
 if (classes.includes(previousValue)) {
     kelas.value = previousValue;
 }
-```
 
 }
 
 function getFormData() {
 const data = Object.fromEntries(new FormData(form).entries());
 
-```
 // Jangan simpan status checkbox sebagai teks sembarangan.
 data.pernyataan = document.getElementById("pernyataan").checked;
 
 return data;
-```
 
 }
 
@@ -134,7 +126,6 @@ if (!data.nama?.trim()) {
 return "Nama lengkap wajib diisi.";
 }
 
-```
 if (!/^[0-9+\-\s()]{8,20}$/.test(data.telepon || "")) {
     return "Format nomor HP tidak valid.";
 }
@@ -173,7 +164,6 @@ if (
 }
 
 return "";
-```
 
 }
 
@@ -184,7 +174,6 @@ unit.addEventListener("change", updateClassOptions);
 form.addEventListener("submit", async (event) => {
 event.preventDefault();
 
-```
 if (!form.reportValidity()) {
     return;
 }
@@ -224,7 +213,6 @@ try {
 } finally {
     submitButton.disabled = false;
 }
-```
 
 });
 
