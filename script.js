@@ -64,7 +64,7 @@ function saveData() {
 }
 
 /* =====================================
-   TAHUN AJARAN
+   TAHUN AJARAN BERLANGSUNG
 ===================================== */
 
 function generateSchoolYears() {
