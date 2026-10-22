@@ -203,13 +203,6 @@ function validateFormData(data) {
         return "Nama lengkap wajib diisi.";
     }
 
-    if (!data.nis.trim()) {
-        return "NIS wajib diisi.";
-    }
-
-    if (data.nisn && !/^\d+$/.test(data.nisn)) {
-        return "NISN hanya boleh berisi angka.";
-    }
 
     if (!/^[0-9+\-\s()]{8,20}$/.test(data.telepon)) {
         return "Format nomor HP tidak valid.";
