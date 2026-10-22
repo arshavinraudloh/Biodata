@@ -113,28 +113,56 @@ table.addEventListener("click", event => {
         return;
     }
 
-    const rows = Object.entries(item)
-        .filter(([key]) => key !== "id")
-        .map(([key, value]) => {
-            let displayValue = "";
+const urutanField = [
+    "nama",
+    "unit",
+    "kelas",
+    "jabatan",
+    "divisi",
+    "telepon",
+    "tahunMulai",
+    "tahunSelesai",
+    "tanggalLahir",
+    "jenisKelamin",
+    "alamat",
+    "instagram",
+    "pernyataan",
+    "createdAt"
+];
 
-            if (value && typeof value.toDate === "function") {
-                displayValue = value.toDate().toLocaleString("id-ID");
-            } else if (value && typeof value === "object") {
-                displayValue = JSON.stringify(value);
-            } else {
-                displayValue = String(value ?? "-");
-            }
+const semuaField = [
+    ...urutanField.filter(key =>
+        Object.prototype.hasOwnProperty.call(item, key)
+    ),
+    ...Object.keys(item).filter(key =>
+        !urutanField.includes(key) && key !== "id"
+    )
+];
 
-            return `
-                <tr>
-                    <th>${escapeHTML(key)}</th>
-                    <td>${escapeHTML(displayValue)}</td>
-                </tr>
-            `;
-        })
-        .join("");
+const rows = semuaField
+    .filter(key => key !== "id")
+    .map(key => {
+        const value = item[key];
+        let displayValue = "";
 
+        if (value && typeof value.toDate === "function") {
+            displayValue = value.toDate().toLocaleString("id-ID");
+        } else if (value && typeof value === "object") {
+            displayValue = JSON.stringify(value);
+        } else if (typeof value === "boolean") {
+            displayValue = value ? "Ya" : "Tidak";
+        } else {
+            displayValue = String(value ?? "-");
+        }
+
+        return `
+            <tr>
+                <th>${escapeHTML(key)}</th>
+                <td>${escapeHTML(displayValue)}</td>
+            </tr>
+        `;
+    })
+    .join("");
     detailWindow.document.write(`
         <!DOCTYPE html>
         <html lang="id">
