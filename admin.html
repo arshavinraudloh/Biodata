@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin OSIS | Al-Falah Al-Makky</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .admin-container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 24px;
+        }
+
+        .admin-card {
+            background: white;
+            padding: 24px;
+            border-radius: 14px;
+            box-shadow: 0 4px 18px rgba(0,0,0,.08);
+            color: #173d32;
+        }
+
+        .admin-card input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px;
+            margin: 8px 0 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        .admin-card button {
+            padding: 11px 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 4px;
+        }
+
+        .admin-table-wrap {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 700px;
+        }
+
+        .admin-table th,
+        .admin-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .admin-table th {
+            background: #103c32;
+            color: white;
+        }
+
+        #dashboard {
+            display: none;
+        }
+
+        #adminMessage {
+            overflow-wrap: anywhere;
+        }
+    </style>
+</head>
+<body>
+    <main class="admin-container">
+        <section class="admin-card">
+            <h1>Admin Pendataan OSIS</h1>
+            <p>SMP dan SMA Plus Al-Falah Al-Makky</p>
+
+            <div id="loginPanel">
+                <h2>Login Admin</h2>
+
+                <form id="loginForm">
+                    <label for="email">Email admin</label>
+                    <input id="email" type="email" required autocomplete="username">
+
+                    <label for="password">Kata sandi</label>
+                    <input id="password" type="password" required
+                           autocomplete="current-password">
+
+                    <button type="submit">Masuk</button>
+                </form>
+            </div>
+
+            <p id="adminMessage" role="status" aria-live="polite"></p>
+
+            <section id="dashboard">
+                <h2>Data Biodata Siswa</h2>
+
+                <button id="refreshButton" type="button">Muat Ulang Data</button>
+                <button id="exportButton" type="button">Ekspor CSV</button>
+                <button id="logoutButton" type="button">Keluar</button>
+
+                <p id="dataCount">Jumlah data: 0</p>
+
+                <label for="searchInput">Cari nama siswa</label>
+                <input id="searchInput" type="search"
+                       placeholder="Ketik nama siswa...">
+
+                <div class="admin-table-wrap">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Nama</th>
+                                <th>Unit</th>
+                                <th>Kelas</th>
+                                <th>Jabatan</th>
+                                <th>Divisi</th>
+                                <th>Telepon</th>
+                                <th>Tahun Mulai</th>
+                                <th>Tahun Selesai</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dataTable">
+                            <tr>
+                                <td colspan="8">Belum ada data yang dimuat.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <script type="module" src="admin.js"></script>
+</body>
+</html>
