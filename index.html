@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Formulir biodata pengurus OSIS SMP dan SMA Plus Al-Falah Al-Makky.">
+
+    <meta name="theme-color" content="#103c32">
+
+    <title>Pendataan OSIS | Plus Al-Falah Al-Makky</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container header-content">
+            <a href="#" class="brand" aria-label="Beranda">
+                <div class="brand-icon">AF</div>
+
+                <div>
+                    <h1>AL-FALAH AL-MAKKY</h1>
+                    <p>Sistem Pendataan Pengurus OSIS</p>
+                </div>
+            </a>
+
+            <span class="header-badge">ADMINISTRASI ORGANISASI</span>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container hero-content">
+                <span class="eyebrow">SISTEM INFORMASI KESISWAAN</span>
+
+                <h2>Formulir Biodata<br>Pengurus OSIS</h2>
+
+                <p>
+                    Pendataan resmi identitas dan periode kepengurusan
+                    Organisasi Siswa Intra Sekolah SMP dan SMA
+                    Plus Al-Falah Al-Makky.
+                </p>
+
+                <div class="hero-info">
+                    <div>
+                        <span class="info-label">UNIT ORGANISASI</span>
+                        <strong>OSIS SMP & SMA</strong>
+                    </div>
+
+                    <div>
+                        <span class="info-label">JENIS DOKUMEN</span>
+                        <strong>Administrasi Kepengurusan</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container main-section">
+
+            <div class="section-heading">
+                <div>
+                    <span class="section-number">01 / PENDAFTARAN</span>
+                    <h2>Formulir Biodata</h2>
+                    <p>Lengkapi informasi berikut dengan benar.</p>
+                </div>
+
+                <span class="required-note">* Wajib diisi</span>
+            </div>
+
+            <form id="osisForm">
+
+                <div class="form-section">
+                    <div class="form-section-title">
+                        <span class="section-icon">01</span>
+                        <div>
+                            <h3>Identitas Organisasi</h3>
+                            <p>Unit sekolah dan masa jabatan.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+
+                        <div class="field">
+                            <label for="unit">Unit OSIS <span>*</span></label>
+
+                            <select id="unit" name="unit" required>
+                                <option value="">Pilih unit OSIS</option>
+                                <option value="SMP">OSIS SMP</option>
+                                <option value="SMA">OSIS SMA</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="jabatan">Jabatan <span>*</span></label>
+
+                            <select id="jabatan" name="jabatan" required>
+                                <option value="">Pilih jabatan</option>
+                                <option>Ketua</option>
+                                <option>Wakil Ketua</option>
+                                <option>Sekretaris</option>
+                                <option>Bendahara</option>
+                                <option>Koordinator Divisi</option>
+                                <option>Anggota</option>
+                                <option>Jabatan Lainnya</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="divisi">Divisi / Seksi</label>
+
+                            <select id="divisi" name="divisi">
+                                <option value="">Pilih divisi (opsional)</option>
+                                <option>Keagamaan</option>
+                                <option>Kedisiplinan</option>
+                                <option>Pendidikan dan Akademik</option>
+                                <option>Olahraga dan Kesehatan</option>
+                                <option>Seni dan Budaya</option>
+                                <option>Lingkungan Hidup</option>
+                                <option>Komunikasi dan Informasi</option>
+                                <option>Humas</option>
+                                <option>Lainnya</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="kelas">Kelas <span>*</span></label>
+
+                            <select id="kelas" name="kelas" required>
+                                <option value="">Pilih kelas</option>
+                                <option>VII</option>
+                                <option>VIII</option>
+                                <option>IX</option>
+                                <option>X</option>
+                                <option>XI</option>
+                                <option>XII</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="tahunMulai">
+                                Tahun Ajaran Mulai <span>*</span>
+                            </label>
+
+                            <select id="tahunMulai" name="tahunMulai" required>
+                                <option value="">Pilih tahun ajaran</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="tahunSelesai">
+                                Tahun Ajaran Selesai <span>*</span>
+                            </label>
+
+                            <select id="tahunSelesai" name="tahunSelesai" required>
+                                <option value="">Pilih tahun ajaran</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="period-preview" id="periodPreview" aria-live="polite">
+                        Periode kepengurusan akan ditampilkan di sini.
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="form-section-title">
+                        <span class="section-icon">02</span>
+                        <div>
+                            <h3>Identitas Pribadi</h3>
+                            <p>Informasi dasar pengurus OSIS.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+
+                        <div class="field full-width">
+                            <label for="nama">Nama Lengkap <span>*</span></label>
+
+                            <input
+                                type="text"
+                                id="nama"
+                                name="nama"
+                                placeholder="Masukkan nama lengkap"
+                                maxlength="100"
+                                autocomplete="name"
+                                required
+                            >
+                        </div>
+
+                        <div class="field">
+                            <label for="nis">NIS <span>*</span></label>
+
+                            <input
+                                type="text"
+                                id="nis"
+                                name="nis"
+                                placeholder="Nomor Induk Siswa"
+                                maxlength="30"
+                                required
+                            >
+                        </div>
+
+                        <div class="field">
+                            <label for="nisn">NISN</label>
+
+                            <input
+                                type="text"
+                                id="nisn"
+                                name="nisn"
+                                inputmode="numeric"
+                                placeholder="Opsional"
+                                maxlength="20"
+                            >
+                        </div>
+
+                        <div class="field">
+                            <label for="tempatLahir">Tempat Lahir <span>*</span></label>
+
+                            <input
+                                type="text"
+                                id="tempatLahir"
+                                name="tempatLahir"
+                                placeholder="Kota kelahiran"
+                                maxlength="100"
+                                required
+                            >
+                        </div>
+
+                        <div class="field">
+                            <label for="tanggalLahir">Tanggal Lahir <span>*</span></label>
+
+                            <input
+                                type="date"
+                                id="tanggalLahir"
+                                name="tanggalLahir"
+                                required
+                            >
+                        </div>
+
+                        <div class="field">
+                            <label for="jenisKelamin">Jenis Kelamin <span>*</span></label>
+
+                            <select id="jenisKelamin" name="jenisKelamin" required>
+                                <option value="">Pilih jenis kelamin</option>
+                                <option value="Laki-laki">Laki-laki</option>
+                                <option value="Perempuan">Perempuan</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="agama">Agama <span>*</span></label>
+
+                            <select id="agama" name="agama" required>
+                                <option value="">Pilih agama</option>
+                                <option value="Islam">Islam</option>
+                                <option value="Lainnya">Lainnya</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="form-section-title">
+                        <span class="section-icon">03</span>
+                        <div>
+                            <h3>Informasi Kontak</h3>
+                            <p>Informasi untuk keperluan koordinasi organisasi.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+
+                        <div class="field">
+                            <label for="telepon">Nomor HP / WhatsApp <span>*</span></label>
+
+                            <input
+                                type="tel"
+                                id="telepon"
+                                name="telepon"
+                                placeholder="Contoh: 08xxxxxxxxxx"
+                                maxlength="20"
+                                autocomplete="tel"
+                                required
+                            >
+                        </div>
+
+                        <div class="field">
+                            <label for="email">Email</label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="nama@email.com"
+                                maxlength="150"
+                                autocomplete="email"
+                            >
+                        </div>
+
+                        <div class="field full-width">
+                            <label for="alamat">Alamat Lengkap <span>*</span></label>
+
+                            <textarea
+                                id="alamat"
+                                name="alamat"
+                                rows="3"
+                                maxlength="500"
+                                placeholder="Masukkan alamat tempat tinggal"
+                                autocomplete="street-address"
+                                required
+                            ></textarea>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="form-section-title">
+                        <span class="section-icon">04</span>
+                        <div>
+                            <h3>Pernyataan</h3>
+                            <p>Konfirmasi kebenaran informasi yang diberikan.</p>
+                        </div>
+                    </div>
+
+                    <label class="checkbox-field">
+                        <input
+                            type="checkbox"
+                            id="pernyataan"
+                            name="pernyataan"
+                            required
+                        >
+
+                        <span>
+                            Saya menyatakan bahwa data yang diisikan
+                            merupakan informasi yang benar dan dapat
+                            dipertanggungjawabkan untuk keperluan
+                            administrasi kepengurusan OSIS.
+                        </span>
+                    </label>
+
+                    <p class="privacy-note">
+                        Informasi pribadi hanya boleh diakses dan digunakan
+                        oleh pihak yang berwenang sesuai kebijakan sekolah.
+                    </p>
+                </div>
+
+                <div class="form-actions">
+                    <button type="reset" class="btn btn-secondary">
+                        Reset Formulir
+                    </button>
+
+                    <button type="submit" class="btn btn-primary">
+                        Simpan Biodata
+                        <span aria-hidden="true">→</span>
+                    </button>
+                </div>
+
+                <p id="formMessage" class="form-message" role="status"></p>
+
+            </form>
+
+            <section class="data-section">
+                <div class="section-heading data-heading">
+                    <div>
+                        <span class="section-number">02 / ARSIP DATA</span>
+                        <h2>Data Pengurus OSIS</h2>
+                        <p>Daftar biodata yang tersimpan di browser ini.</p>
+                    </div>
+
+                    <span class="data-count" id="dataCount">0 Data</span>
+                </div>
+
+                <div class="toolbar">
+                    <div class="search-box">
+                        <label for="searchData" class="sr-only">
+                            Cari data pengurus
+                        </label>
+
+                        <input
+                            type="search"
+                            id="searchData"
+                            placeholder="Cari nama, NIS, atau jabatan..."
+                        >
+                    </div>
+
+                    <div class="toolbar-actions">
+                        <button type="button" id="exportBtn" class="btn btn-outline">
+                            Ekspor CSV
+                        </button>
+
+                        <button type="button" id="printBtn" class="btn btn-outline">
+                            Cetak Data
+                        </button>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Nama Pengurus</th>
+                                <th>Unit</th>
+                                <th>Jabatan</th>
+                                <th>Kelas</th>
+                                <th>Periode</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="dataTable">
+                        </tbody>
+                    </table>
+
+                    <div id="emptyState" class="empty-state">
+                        <div class="empty-icon">▤</div>
+                        <h3>Belum Ada Data</h3>
+                        <p>Isi formulir di atas untuk menambahkan data pengurus.</p>
+                    </div>
+                </div>
+
+                <p class="storage-notice">
+                    Penyimpanan lokal: data hanya tersedia di browser
+                    dan perangkat ini. Gunakan ekspor CSV untuk membuat
+                    salinan cadangan.
+                </p>
+            </section>
+
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div>
+                <strong>PLUS AL-FALAH AL-MAKKY</strong>
+                <p>Sistem Administrasi Organisasi Siswa</p>
+            </div>
+
+            <p>
+                &copy; <span id="currentYear"></span>
+                OSIS SMP & SMA Plus Al-Falah Al-Makky
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
+```
