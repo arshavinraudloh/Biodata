@@ -418,14 +418,12 @@ function showDetails(item) {
         ["Divisi", item.divisi || "-"],
         ["Kelas", item.kelas],
         ["Tahun ajaran", `${item.tahunMulai} sampai ${item.tahunSelesai}`],
-        ["NIS", item.nis],
-        ["NISN", item.nisn || "-"],
         ["Tempat lahir", item.tempatLahir],
         ["Tanggal lahir", item.tanggalLahir],
         ["Jenis kelamin", item.jenisKelamin],
         ["Agama", item.agama],
         ["Nomor HP", item.telepon],
-        ["Email", item.email || "-"],
+        ["Instagram", item.instagram || "-"],
         ["Alamat", item.alamat]
     ];
 
