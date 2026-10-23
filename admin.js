@@ -316,8 +316,11 @@ table.addEventListener("click", async event => {
                 divisi: divisi.trim(),
                 telepon: telepon.trim(),
                 tahunMulai: tahunMulai.trim(),
-                tahunSelesai: tahunSelesai.trim()
-            });
+                tahunSelesai: tahunSelesai.trim(),
+                tanggalLahir: tanggalLahir.trim(),
+                alamat: alamat.trim(),
+                instagram: instagram.trim()
+            }); 
 
             showMessage("Biodata berhasil diperbarui.");
             await loadData();
