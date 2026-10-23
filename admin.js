@@ -239,6 +239,130 @@ const rows = semuaField
     detailWindow.document.close();
 });
 
+// FUNGSI EDIT DAN HAPUS BIODATA
+table.addEventListener("click", async event => {
+    const button = event.target.closest(".edit-button, .delete-button");
+
+    if (!button) return;
+
+    // Pastikan hanya admin yang bisa melakukan perubahan
+    if (auth.currentUser?.uid !== ADMIN_UID) {
+        showMessage("Akses ditolak. Silakan login sebagai admin.");
+        return;
+    }
+
+    const id = button.dataset.id;
+    const item = allData.find(data => data.id === id);
+
+    if (!item) {
+        showMessage("Data biodata tidak ditemukan.");
+        return;
+    }
+
+    // =========================
+    // TOMBOL EDIT
+    // =========================
+    if (button.classList.contains("edit-button")) {
+        const nama = prompt("Nama siswa:", item.nama ?? "");
+        if (nama === null) return;
+
+        const unit = prompt("Unit (SMP/SMA):", item.unit ?? "");
+        if (unit === null) return;
+
+        const kelas = prompt("Kelas:", item.kelas ?? "");
+        if (kelas === null) return;
+
+        const jabatan = prompt("Jabatan:", item.jabatan ?? "");
+        if (jabatan === null) return;
+
+        const divisi = prompt("Divisi:", item.divisi ?? "");
+        if (divisi === null) return;
+
+        const telepon = prompt("Nomor telepon:", item.telepon ?? "");
+        if (telepon === null) return;
+
+        const tahunMulai = prompt(
+            "Tahun mulai:",
+            item.tahunMulai ?? ""
+        );
+        if (tahunMulai === null) return;
+
+        const tahunSelesai = prompt(
+            "Tahun selesai:",
+            item.tahunSelesai ?? ""
+        );
+        if (tahunSelesai === null) return;
+
+        if (!nama.trim()) {
+            showMessage("Nama siswa tidak boleh kosong.");
+            return;
+        }
+
+        const yakin = confirm(
+            "Simpan perubahan biodata siswa ini?"
+        );
+
+        if (!yakin) return;
+
+        button.disabled = true;
+        showMessage("Menyimpan perubahan biodata...");
+
+        try {
+            await updateDoc(doc(db, "biodata", id), {
+                nama: nama.trim(),
+                unit: unit.trim(),
+                kelas: kelas.trim(),
+                jabatan: jabatan.trim(),
+                divisi: divisi.trim(),
+                telepon: telepon.trim(),
+                tahunMulai: tahunMulai.trim(),
+                tahunSelesai: tahunSelesai.trim()
+            });
+
+            showMessage("Biodata berhasil diperbarui.");
+            await loadData();
+        } catch (error) {
+            console.error("Gagal mengedit biodata:", error);
+            showMessage(
+                "Gagal menyimpan perubahan. Periksa Firestore Rules dan koneksi."
+            );
+        } finally {
+            button.disabled = false;
+        }
+
+        return;
+    }
+
+    // =========================
+    // TOMBOL HAPUS
+    // =========================
+    if (button.classList.contains("delete-button")) {
+        const yakin = confirm(
+            `Yakin ingin menghapus biodata "${item.nama ?? "siswa ini"}"?\n\n` +
+            "Data yang dihapus tidak dapat dipulihkan melalui halaman ini."
+        );
+
+        if (!yakin) return;
+
+        button.disabled = true;
+        showMessage("Menghapus biodata...");
+
+        try {
+            await deleteDoc(doc(db, "biodata", id));
+
+            showMessage("Biodata berhasil dihapus.");
+            await loadData();
+        } catch (error) {
+            console.error("Gagal menghapus biodata:", error);
+            showMessage(
+                "Gagal menghapus data. Periksa Firestore Rules dan koneksi."
+            );
+        } finally {
+            button.disabled = false;
+        }
+    }
+});
+
 async function loadData() {
     if (auth.currentUser?.uid !== ADMIN_UID) {
         showMessage("Akses ditolak. Akun ini bukan admin.");
