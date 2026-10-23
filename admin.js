@@ -90,7 +90,19 @@ function renderData() {
                 <button type="button"
                     class="detail-button"
                     data-id="${escapeHTML(item.id)}">
-                    Lihat Detail
+                    Detail
+                </button>
+                
+                <button type="button"
+                    class="edit-button"
+                    data-id="${escapeHTML(item.id)}">
+                    Edit
+                </button>
+
+                <button type="button"
+                    class="delete-button"
+                    data-id="${escapeHTML(item.id)}">
+                    Hapus
                 </button>
             </td>
         </tr>
