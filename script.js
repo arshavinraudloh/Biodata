@@ -198,11 +198,21 @@ try {
     form.reset();
     updateClassOptions();
     updatePeriodPreview();
+showMessage(
+    "Biodata yang kamu kirim telah tersimpan. Terima kasih telah mengisi formulir pendataan OSIS!",
+    "success"
+);
 
-    showMessage(
-        "Biodata berhasil dikirim. Terima kasih.",
-        "success"
-    );
+const successMessage = document.getElementById("successMessage");
+
+if (successMessage) {
+    successMessage.hidden = false;
+    successMessage.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+}
+
 } catch (error) {
     console.error("Gagal menyimpan biodata:", error);
 
