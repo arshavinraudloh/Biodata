@@ -292,7 +292,25 @@ table.addEventListener("click", async event => {
             item.tahunSelesai ?? ""
         );
         if (tahunSelesai === null) return;
+        
+         const tanggalLahir = prompt(
+            "Tanggal Lahir:",
+            item.tanggalLahir ?? ""
+        );
+        if (tanggalLahir === null) return;
 
+        const alamat = prompt(
+            "Alamat:",
+            item.alamat ?? ""
+        );
+        if (alamat === null) return;
+
+        const instagram = prompt(
+            "Instagram:",
+            item.instagram ?? ""
+        );
+        if (instagram === null) return;
+        
         if (!nama.trim()) {
             showMessage("Nama siswa tidak boleh kosong.");
             return;
