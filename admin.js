@@ -124,6 +124,8 @@ const urutanField = [
     "tahunSelesai",
     "tanggalLahir",
     "jenisKelamin",
+    "agama",
+    "tempatlahir",
     "alamat",
     "instagram",
     "pernyataan",
