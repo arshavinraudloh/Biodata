@@ -67,14 +67,44 @@
         #adminMessage {
             overflow-wrap: anywhere;
         }
+.admin-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.admin-logo {
+    width: 65px;
+    height: 65px;
+    min-width: 65px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    display: block;
+    background: transparent;
+}
     </style>
 </head>
 <body>
-    <main class="admin-container">
-        <section class="admin-card">
-            <h1>Admin Pendataan OSIS</h1>
-            <p>SMP dan SMA Plus Al-Falah Al-Makky</p>
+<main class="admin-container">
+    <section class="admin-card">
 
+        <div class="admin-header">
+            <img
+                src="OSIS.jpg"
+                alt="Logo OSIS Al-Falah Al-Makky"
+                class="admin-logo"
+            >
+
+            <div>
+                <h1>Admin Pendataan OSIS</h1>
+                <p>SMP dan SMA Plus Al-Falah Al-Makky</p>
+            </div>
+        </div>
             <div id="loginPanel">
                 <h2>Login Admin</h2>
 
