@@ -851,12 +851,16 @@ tbody tr:last-child td {
         padding-bottom: 20px;
     }
 }
-    .school-logo {
-    width: 35px !important;
-    height: 35px !important;
-    object-fit: contain;
-    flex-shrink: 0;
-    }
+.school-logo {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
 
 .success-message {
     margin: 24px 0;
